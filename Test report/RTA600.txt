@@ -1,0 +1,5 @@
+01-0002251215-1022-20200825-A-01
+010002251215102620200825A01
+
+
+> sout = Format(id, "00") & scard10 & Left(stime, 4) & sdate & sshift1 & "0" & skey
