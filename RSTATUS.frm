@@ -2,11 +2,21 @@ VERSION 5.00
 Begin VB.Form RSTATUS 
    AutoRedraw      =   -1  'True
    BackColor       =   &H00000000&
-   Caption         =   "Receive Console (VSI)"
+   Caption         =   "Vistasoft IT Bangladesh Ltd."
    ClientHeight    =   1575
    ClientLeft      =   7485
    ClientTop       =   2310
    ClientWidth     =   5955
+   BeginProperty Font 
+      Name            =   "Lucida Sans"
+      Size            =   8.25
+      Charset         =   0
+      Weight          =   400
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
+   Icon            =   "RSTATUS.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   1575
    ScaleWidth      =   5955
@@ -45,6 +55,7 @@ Begin VB.Form RSTATUS
       TabIndex        =   0
       Top             =   360
       Width           =   5640
+      WordWrap        =   -1  'True
    End
 End
 Attribute VB_Name = "RSTATUS"

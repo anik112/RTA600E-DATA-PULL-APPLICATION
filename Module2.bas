@@ -5,6 +5,8 @@ Public Com, id As Long   'ComPort , NodeId
 Public Com_check As Integer
 Public ch_real As Integer
 Public curdate As String
+Public curtime As String
+Public formatedcurdate As String
 Public gStatus As String
 
 Function FN_opencom(ByVal pscom As String, ByVal psbaud As String)
@@ -98,13 +100,17 @@ End Function
 
 Function FN_save(p_id)    'Save Data
     'Declare variable
-    Dim Length, num, i, irecno, ierr, iretry As Integer
+    Dim Length, num, i, check, irecno, ierr, iretry As Integer
     Dim Str_tmp, s, s1, Tmp, sout As String
     Dim scard, stime, sdate, sshift, scard10, sshift1, srec1, skey As String
     Dim sAppPath, sINIfile, outpath1, out650s, errorPath As String
     Dim outpath As String * 255
     Dim out650 As String * 255
     Dim sCheck650 As String
+    curtime = Format$(Time, "hhmmss")
+    formatedcurdate = Format$(Now, "ddMMyyyy")
+    check = 0
+    
     'Check Application path is valid or not
     sAppPath = App.Path
     If Right(sAppPath, 1) <> "\" Then
@@ -226,9 +232,10 @@ Function FN_save(p_id)    'Save Data
             
             'Check time & date format is valid or not
             If sCheck650 = "OK" Then
+            check = 1
             'Formated output String
-               sout = Format(id, "000") & ":" & scard10 & ":" & sdate & ":" & Left(stime, 6) & ":" & "BLANK !!" & ":" & Format(skey, "00")
-               soutfile = outpath1 & curdate & "-RTA.txt"
+               sout = Format(id, "000") & ":" & scard10 & ":" & sdate & ":" & Left(stime, 6) & ":11"
+               soutfile = outpath1 & formatedcurdate & "-RTA.txt"
                Open soutfile For Append As #1
                Print #1, sout
                RSTATUS.sout.Caption = sout
@@ -243,7 +250,11 @@ Function FN_save(p_id)    'Save Data
          Call TSM_ACKGN06(pcdll(1), id)
       Else
         If Length = 3 Then
-            RSTATUS.sout.Caption = "NID:" & id & " -- No Data!"
+            If check = 0 Then
+                RSTATUS.sout.Caption = "NID:" & id & " -- No Data!"
+            Else
+                RSTATUS.sout.Caption = "NID:" & id & " -- Data Received!"
+            End If
             Exit Do
         Else
             ierr = ierr - 1
