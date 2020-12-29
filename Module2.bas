@@ -100,7 +100,7 @@ End Function
 
 Function FN_save(p_id)    'Save Data
     'Declare variable
-    Dim Length, num, i, check, irecno, ierr, iretry As Integer
+    Dim Length, num, i, check, irecno, ierr, iretry, count As Integer
     Dim Str_tmp, s, s1, Tmp, sout As String
     Dim scard, stime, sdate, sshift, scard10, sshift1, srec1, skey As String
     Dim sAppPath, sINIfile, outpath1, out650s, errorPath As String
@@ -116,6 +116,10 @@ Function FN_save(p_id)    'Save Data
     If Right(sAppPath, 1) <> "\" Then
       sAppPath = sAppPath & "\"
     End If
+    
+    Dim logPth As String
+    logPth = sAppPath & "log.txt"
+
     'Make accessable file path for access
     'RTA600 file
     sINIfile = sAppPath & "RTA600.INI"
@@ -130,6 +134,7 @@ Function FN_save(p_id)    'Save Data
     id = p_id
     ierr = 5
     irecno = 1
+    count = 0
 'Receive Data
     Do While ierr > 0
       DoEvents
@@ -217,6 +222,9 @@ Function FN_save(p_id)    'Save Data
                 Print #2, "Error Time Format!"
                 Close #2
                 sCheck650 = "Err1"
+                Open logPth For Append As #3
+                Print #3, "Error Time Format!" & id
+                Close #3
                 'End
             End If
             
@@ -227,7 +235,9 @@ Function FN_save(p_id)    'Save Data
                 Print #2, "Error Date Format!"
                 Close #2
                 sCheck650 = "Err2"
-
+                Open logPth For Append As #3
+                Print #3, "Error Date Format!" & id
+                Close #3
             End If
             
             'Check time & date format is valid or not
@@ -240,6 +250,7 @@ Function FN_save(p_id)    'Save Data
                Print #1, sout
                RSTATUS.sout.Caption = sout
                irecno = irecno + 1
+               count = count + 1
                Close #1
             End If
             
@@ -252,8 +263,14 @@ Function FN_save(p_id)    'Save Data
         If Length = 3 Then
             If check = 0 Then
                 RSTATUS.sout.Caption = "NID:" & id & " -- No Data!"
+                Open logPth For Append As #3
+                Print #3, "NID:" & id & " -- No Data!"
+                Close #3
             Else
                 RSTATUS.sout.Caption = "NID:" & id & " -- Data Received!"
+                Open logPth For Append As #3
+                Print #3, "NID:" & id & " -- Data " & count & " Received!"
+                Close #3
             End If
             Exit Do
         Else
@@ -262,6 +279,6 @@ Function FN_save(p_id)    'Save Data
       End If
       
     Loop
-
+    
 End Function
 
