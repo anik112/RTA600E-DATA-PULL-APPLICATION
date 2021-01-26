@@ -154,6 +154,9 @@ Function FN_save(p_id)    'Save Data
          For i = 4 To Length
             s = s & Chr(Readbuffer(i))
          Next i
+        Open logPth For Append As #3
+        Print #3, s
+        Close #3
          'MsgBox "Buffer: " & s, vbInformation
       End If
       'Compare resule is difference, iERR - 1
@@ -165,7 +168,7 @@ Function FN_save(p_id)    'Save Data
       
       If Length > 3 Then
          
-         'MsgBox "data:" & s, vbInformation
+         MsgBox "data:" & s, vbInformation
          'Decode receive data
          Do While InStr(s, "#") > 0
             srec1 = Left(s, InStr(s, "#") - 1)
