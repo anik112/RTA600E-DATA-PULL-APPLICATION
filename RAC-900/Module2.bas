@@ -1,6 +1,6 @@
 Attribute VB_Name = "Module2"
-Public pcdll(20000) As Byte
-Public Readbuffer(512) As Byte             'Receive Buffer
+Public pcdll(40000) As Byte
+Public Readbuffer(612) As Byte             'Receive Buffer
 Public Com, id As Long   'ComPort , NodeId
 Public Com_check As Integer
 Public ch_real As Integer
@@ -139,19 +139,21 @@ Function FN_save(p_id)    'Save Data
     Do While ierr > 0
       DoEvents
       
-      'Compare receive data is correct?
       Length = TSM_RSTND09(pcdll(1), id, Readbuffer(1))
-      If Length > 3 Then
-         For i = 4 To Length
-            s = s & Chr(Readbuffer(i))
-         Next i
+      MsgBox "Check: " & Chr(Readbuffer(4)) & Chr(Readbuffer(5)), vbInformation
+        For i = 4 To Length
+           s = s & Chr(Readbuffer(i))
+        Next i
+        Dim aDate, aTime As String
+        aDate = FN_get_date()
+        aTime = FN_get_time()
+        
         Open logPth For Append As #3
-        Print #3, s
+        Print #3, s & " -- " & aDate & " -- " & aTime
         Close #3
-        MsgBox "Buffer: " & s, vbInformation
-      End If
+        MsgBox "Buffer: " & s & aDate & " -- " & aTime, vbInformation
       
-        MsgBox "data:" & s, vbInformation
+        'MsgBox "data:" & s, vbInformation
         'Decode receive data
         Do While InStr(s, "#") > 0
         '---------------------
