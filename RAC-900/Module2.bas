@@ -167,7 +167,7 @@ Function FN_save(p_id)    'Save Data
                 Case 2
                     'date
                     sdateTime = Left(srec1, InStr(srec1, ":") - 1)
-                    If CInt(sdateTime) > 60001 And CInt(sdateTime) < 50001 Then
+                    If CInt(sdateTime) > 115959 And CInt(sdateTime) < 235959 Then
                     stime = sdateTime
                     sdate = Format$(Now, "yyyyMMdd")
                     Else
