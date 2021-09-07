@@ -1,0 +1,114 @@
+Open COM Port Success, COM4
+NID:12 -- No Data!
+NODE: 12 :: Data Received!!
+Open COM Port Success, COM4
+NID:13 -- No Data!
+NODE: 13 :: Data Received!!
+Open COM Port Success, COM4
+NID:14 -- No Data!
+NODE: 14 :: Data Received!!
+Open COM Port Success, COM4
+NID:15 -- No Data!
+NODE: 15 :: Data Received!!
+Open COM Port Success, COM4
+NID:17 -- No Data!
+NODE: 17 :: Data Received!!
+Open COM Port Success, COM4
+NID:18 -- No Data!
+NODE: 18 :: Data Received!!
+Open COM Port Success, COM4
+NID:19 -- No Data!
+NODE: 19 :: Data Received!!
+Open COM Port Success, COM4
+NID:20 -- No Data!
+NODE: 20 :: Data Received!!
+Open COM Port Success, COM4
+NID:21 -- No Data!
+NODE: 21 :: Data Received!!
+Open COM Port Success, COM4
+NID:22 -- No Data!
+NODE: 22 :: Data Received!!
+Open COM Port Success, COM4
+NID:23 -- No Data!
+NODE: 23 :: Data Received!!
+Open COM Port Success, COM4
+NID:24 -- No Data!
+NODE: 24 :: Data Received!!
+Open COM Port Success, COM4
+NID:25 -- No Data!
+NODE: 25 :: Data Received!!
+Open COM Port Success, COM4
+NID:26 -- No Data!
+NODE: 26 :: Data Received!!
+Open COM Port Success, COM4
+NID:27 -- No Data!
+NODE: 27 :: Data Received!!
+Open COM Port Success, COM4
+NID:28 -- No Data!
+NODE: 28 :: Data Received!!
+Open COM Port Success, COM4
+NID:16 -- No Data!
+NODE: 16 :: Data Received!!
+Open COM Port Success, COM4
+0006716394:2105097:103239:12:1#
+0006716394:2105097:103239:12:1#-- data. 
+20210509-- make date. 
+20210509-- before check. 
+NID:12 -- Data 1 Received!
+NODE: 12 :: Data Received!!
+Open COM Port Success, COM4
+0006716394:2105097:103117:12:1#
+0006716394:2105097:103117:12:1#-- data. 
+20210509-- make date. 
+20210509-- before check. 
+NID:13 -- Data 1 Received!
+NODE: 13 :: Data Received!!
+Open COM Port Success, COM4
+0006716394:2105097:103149:12:1#
+0006716394:2105097:103149:12:1#-- data. 
+20210509-- make date. 
+20210509-- before check. 
+NID:14 -- Data 1 Received!
+NODE: 14 :: Data Received!!
+Open COM Port Success, COM4
+NID:15 -- No Data!
+NODE: 15 :: Data Received!!
+Open COM Port Success, COM4
+NID:17 -- No Data!
+NODE: 17 :: Data Received!!
+Open COM Port Success, COM4
+NID:18 -- No Data!
+NODE: 18 :: Data Received!!
+Open COM Port Success, COM4
+NID:19 -- No Data!
+NODE: 19 :: Data Received!!
+Open COM Port Success, COM4
+NID:20 -- No Data!
+NODE: 20 :: Data Received!!
+Open COM Port Success, COM4
+NID:21 -- No Data!
+NODE: 21 :: Data Received!!
+Open COM Port Success, COM4
+NID:22 -- No Data!
+NODE: 22 :: Data Received!!
+Open COM Port Success, COM4
+NID:23 -- No Data!
+NODE: 23 :: Data Received!!
+Open COM Port Success, COM4
+NID:24 -- No Data!
+NODE: 24 :: Data Received!!
+Open COM Port Success, COM4
+NID:25 -- No Data!
+NODE: 25 :: Data Received!!
+Open COM Port Success, COM4
+NID:26 -- No Data!
+NODE: 26 :: Data Received!!
+Open COM Port Success, COM4
+NID:27 -- No Data!
+NODE: 27 :: Data Received!!
+Open COM Port Success, COM4
+NID:28 -- No Data!
+NODE: 28 :: Data Received!!
+Open COM Port Success, COM4
+NID:16 -- No Data!
+NODE: 16 :: Data Received!!

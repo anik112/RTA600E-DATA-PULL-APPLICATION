@@ -46,11 +46,11 @@ End Function
 Function FN_get_date()
     Dim dd(512) As Byte
     Call TSM_GTDAT22(pcdll(1), id, dd(1), 0)
-    sdate = ""
+    sDate = ""
     For i = 1 To 6
-        sdate = sdate & Chr(dd(i))
+        sDate = sDate & Chr(dd(i))
     Next
-    FN_get_date = "20" & sdate
+    FN_get_date = "20" & sDate
 End Function
 Function FN_get_time()
     Dim dd(512) As Byte
@@ -102,7 +102,7 @@ Function FN_save(p_id)    'Save Data
     'Declare variable
     Dim Length, num, i, check, irecno, ierr, iretry, count As Integer
     Dim Str_tmp, s, s1, Tmp, sout As String
-    Dim scard, stime, sdate, sshift, scard10, sshift1, srec1, skey As String
+    Dim scard, stime, sDate, sshift, scard10, sshift1, srec1, skey As String
     Dim sAppPath, sINIfile, outpath1, out650s, errorPath As String
     Dim outpath As String * 255
     Dim out650 As String * 255
@@ -110,6 +110,7 @@ Function FN_save(p_id)    'Save Data
     curtime = Format$(Time, "hhmmss")
     formatedcurdate = Format$(Now, "ddMMyyyy")
     check = 0
+    
     
     'Check Application path is valid or not
     sAppPath = App.Path
@@ -135,7 +136,8 @@ Function FN_save(p_id)    'Save Data
     ierr = 5
     irecno = 1
     count = 0
-'Receive Data
+    
+    'Receive Data
     Do While ierr > 0
       DoEvents
       'Compare receive data is correct?
@@ -154,9 +156,6 @@ Function FN_save(p_id)    'Save Data
          For i = 4 To Length
             s = s & Chr(Readbuffer(i))
          Next i
-        Open logPth For Append As #3
-        Print #3, s
-        Close #3
          'MsgBox "Buffer: " & s, vbInformation
       End If
       'Compare resule is difference, iERR - 1
@@ -168,11 +167,11 @@ Function FN_save(p_id)    'Save Data
       
       If Length > 3 Then
          
-         MsgBox "data:" & s, vbInformation
          'Decode receive data
          Do While InStr(s, "#") > 0
             srec1 = Left(s, InStr(s, "#") - 1)
             cu = 1
+            
             Do While InStr(srec1, ":") > 0
                 Select Case cu
                     Case 1
@@ -180,12 +179,8 @@ Function FN_save(p_id)    'Save Data
                         scard = Left(srec1, InStr(srec1, ":") - 1)
                     Case 2
                         'date
-                        sdate = Left(srec1, InStr(srec1, ":") - 1)
-                        If Left(sdate, 2) > "80" Then
-                            sdate = "19" & Mid(sdate, 1, 6)
-                        Else
-                            sdate = "20" & Mid(sdate, 1, 6)
-                        End If
+                        sDate = Left(srec1, InStr(srec1, ":") - 1)
+                        sDate = "20" & Mid(sDate, 1, 6)
                     Case 3
                         'time
                          stime = Left(srec1, InStr(srec1, ":") - 1)
@@ -221,8 +216,7 @@ Function FN_save(p_id)    'Save Data
             'Check Time Format
             If Len(stime) <> 6 Or Mid(stime, 1, 2) > "23" Or Mid(stime, 3, 2) > "59" Or Mid(stime, 5, 2) > "59" Then
                 Open errorPath For Append As #2
-                Print #2, s
-                Print #2, "Error Time Format!"
+                Print #2, Format(id, "000") & ":" & scard10 & ":" & sDate & ":" & Left(stime, 6) & ":11" & formatedcurdate & ";"
                 Close #2
                 sCheck650 = "Err1"
                 Open logPth For Append As #3
@@ -232,10 +226,9 @@ Function FN_save(p_id)    'Save Data
             End If
             
             'Check Date format
-            If Mid(sdate, 5, 2) > "12" Or Mid(stime, 7, 2) > "31" Then
+            If Mid(sDate, 5, 2) > "12" Or Mid(sDate, 7, 2) > "31" Then
                 Open errorPath For Append As #2
-                Print #2, s
-                Print #2, "Error Date Format!"
+                Print #2, Format(id, "000") & ":" & scard10 & ":" & sDate & ":" & Left(stime, 6) & ":11:" & formatedcurdate & ";"
                 Close #2
                 sCheck650 = "Err2"
                 Open logPth For Append As #3
@@ -243,11 +236,12 @@ Function FN_save(p_id)    'Save Data
                 Close #3
             End If
             
+            
             'Check time & date format is valid or not
             If sCheck650 = "OK" Then
             check = 1
             'Formated output String
-               sout = Format(id, "000") & ":" & scard10 & ":" & sdate & ":" & Left(stime, 6) & ":11"
+               sout = Format(id, "000") & ":" & scard10 & ":" & sDate & ":" & Left(stime, 6) & ":11"
                soutfile = outpath1 & formatedcurdate & "-RTA.txt"
                Open soutfile For Append As #1
                Print #1, sout

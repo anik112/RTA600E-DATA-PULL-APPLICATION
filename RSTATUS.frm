@@ -161,6 +161,23 @@ If Len(para) > 0 And InStr(para, ",") > 0 Then
          ireturn = fn_write_parm(2, 104, 5)
          ireturn = fn_write_parm(2, 105, 9)  'KeyIn
          ireturn = fn_write_parm(2, 106, 0)
+         
+         'Dim v_hh, v_mm, v_ss, v_i As Integer
+         'Dim Set_time As String
+         'Dim y(20) As Byte
+         
+         'v_hh = Hour(Now())
+         'v_mm = Minute(Now())
+         'v_ss = Second(Now())
+        
+         'Set_time = Format(v_hh, "00") & Format(v_mm, "00") & Format(v_ss, "00")
+         'For v_i = 1 To Len(Set_time)
+         'y(i) = Mid(Set_time, v_i, 1)
+         'Next v_i
+         
+         'Call TSM_STTIM25(pcdll(1), id, y(1), 0)
+         'RSTATUS.msg.Caption = "NODE: " & iid & " :: Set Time & Date..."
+         
          'Sleep 500
          RSTATUS.msg.Caption = "NODE: " & iid & " :: Data Processing..."
          FN_save (iid)
