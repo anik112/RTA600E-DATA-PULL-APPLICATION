@@ -33,7 +33,7 @@ This application have some core file which is,
 - Then open the application and run it.
 
 ### How to write RTA600.INI file
-```javascript
+```
 [Main]
 NID01=1,COM1,9600,50
 NID02=2,COM1,9600,50
@@ -47,3 +47,12 @@ ofile650=C:\CARDATA\RTA600.TXT
 - ```NID01=1,COM1,9600,50``` 'NID01' represent the index number. It means how many device are connected. '1' represent the NODE ID. 'COM1' represent the port name where our driver installed. '9600' this is default buffer size. '50' this is default cursor size.
 - If we add a new device in this list then we add a new line between 'NID05' and 'Output'. We write ```NID06=8,COM1,9600,50```.
 
+** Attached library name is ```tsmcom32.dll```
+
+### Programming Module
+In this application have total 3 files:
+- RSTATUS.frm
+- Module1.bas
+- Module2.bas
+
+1. ```RSTATUS.frm```  This file useing for output design.
