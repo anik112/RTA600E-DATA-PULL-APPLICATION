@@ -25,4 +25,25 @@ This application have some core file which is,
 
 ### Application Installation
 - At first we install the EPC-406 or others EPC driver.
-- 
+- We install RMS software and check the com port.
+- After check com port we search the device by node id and save the device node id in RMS software.
+- After saving the node id first we try to pull some data from device using RMS software.
+- After successful pull data from device we add this COM port & NODE id in ```RTA600.INI``` file.
+- Then we make a folder which name is 'Data' in D:\ drive.
+- Then open the application and run it.
+
+### How to write RTA600.INI file
+```javascript
+[Main]
+NID01=1,COM1,9600,50
+NID02=2,COM1,9600,50
+NID03=5,COM1,9600,50
+NID04=6,COM1,9600,50
+NID05=7,COM1,9600,50
+[Output]
+opath=D:\DATA\
+ofile650=C:\CARDATA\RTA600.TXT
+```
+- ```NID01=1,COM1,9600,50``` 'NID01' represent the index number. It means how many device are connected. '1' represent the NODE ID. 'COM1' represent the port name where our driver installed. '9600' this is default buffer size. '50' this is default cursor size.
+- If we add a new device in this list then we add a new line between 'NID05' and 'Output'. We write ```NID06=8,COM1,9600,50```.
+
