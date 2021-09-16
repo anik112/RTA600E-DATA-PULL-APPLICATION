@@ -22,3 +22,7 @@ This application have some core file which is,
 - Module1.bas
 - Module2.bas
 - RTA600.INI
+
+### Application Installation
+- At first we install the EPC-406 or others EPC driver.
+- 
